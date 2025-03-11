@@ -6,6 +6,7 @@ import OrderFood from "../assets/Images/orderFood.png";
 import Pickup from "../assets/Images/pickup.png";
 import Enjoy from "../assets/Images/enjoy.png";
 import Layout from "../Layouts/Layout";
+import ProductList from "../Components/ProductList";
 
 function Home() {
   return (
@@ -40,6 +41,12 @@ function Home() {
           <img src={PizzaImage} alt="Pizza" width={550} height={550} />
         </div>
       </section>
+
+  {/* product list */}
+  <div>
+      <ProductList/>
+    </div>
+
 
       {/* Services section */}
       <section className="py-4 mt-6 bg-gradient-to-r from-amber-50 to-orange-300">
