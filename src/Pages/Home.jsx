@@ -5,9 +5,11 @@ import IconPatchCheck from "../components/Icons/IconPatchCheck";
 import OrderFood from "../assets/Images/orderFood.png";
 import Pickup from "../assets/Images/pickup.png";
 import Enjoy from "../assets/Images/enjoy.png";
+import Layout from "../Layouts/Layout";
 
 function Home() {
   return (
+    <Layout>
     <div>
       {/* Hero section */}
       <section
@@ -191,6 +193,7 @@ function Home() {
          </div>
       </section>
     </div>
+    </Layout>
   );
 }
 
