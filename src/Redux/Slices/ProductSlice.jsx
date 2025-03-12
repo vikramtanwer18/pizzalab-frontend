@@ -46,7 +46,7 @@ export const getAllProducts = createAsyncThunk('/get/products',async()=>{
  export const getProductDetails = createAsyncThunk('/get/product',async(productId)=>{
      try {
         
-      const product = axiosInstance.get(`product/${productId}`)
+      const product = axiosInstance.get(`products/get/${productId}`)
       toast.promise(product,{
           loading:'Wait for a time product is fetching....',
           error:"Something went wrong product is not fetching",

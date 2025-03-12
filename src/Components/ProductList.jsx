@@ -9,7 +9,7 @@ function ProductList() {
     useEffect(()=>{
      dispatch(getAllProducts())
     },[])
-    
+
   return (
     <div className="mx-auto">
       <div className="flex flex-wrap justify-center">
@@ -35,7 +35,7 @@ function ProductList() {
                         {item.description}
                       </p>
                       <p className="text-lg font-medium text-gray-900 title-font">
-                        ${item.price}
+                      ₹{item.price}
                       </p>
                     </div>
                   </div>

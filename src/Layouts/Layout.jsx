@@ -3,38 +3,31 @@ import Pizzalogo from '../assets/Images/pizza1.png';
 import Logout from '../Pages/Auth/Logout';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { getCartDetails } from '../Redux/Slices/CartSlice';
-import CartIcon from '../assets/Images/cart.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartDetails } from '../Redux/Slices/CartSlice';
+import CartIcon from '../assets/Images/cart2.png';
+import { useEffect } from 'react';
 
 function Layout({ children }) {
     const navigate = useNavigate()
     const {role} = useSelector(state=>state.auth)
-    // const isLoggedIn =  useSelector((state)=> state.auth.isLoggedIn)
-    // const {cartsData} = useSelector((state)=>state.cart)
-
-    // const dispatch = useDispatch();
-    // console.log(cartsData)
-
-    // async function handleLogout(e) {
-    //     e.preventDefault();
-    //     dispatch(logout());
-        
-    // // }
-
-    // async function fetchCartDetails() {
-    //     const res = await dispatch(getCartDetails());
-    //     console.log("cart details", res)
+    const isLoggedIn =  useSelector((state)=> state.auth.isLoggedIn)
+    const {cartsData} = useSelector((state)=>state.cart)
+    console.log('cartsdata',cartsData)
+    const dispatch = useDispatch();
+ 
+    async function fetchCartDetails() {
+        const res = await dispatch(getCartDetails());
+        console.log("cart details", res)
        
-    // }
+    }
 
-    // useEffect(() => {
-       
-    //     if(isLoggedIn) {
-    //         fetchCartDetails();
-    //     }
-    // }, []);
+    useEffect(() => {
+        if(isLoggedIn) {
+            fetchCartDetails();
+        }
+    }, []);
+
     return (
         <div>
 
@@ -81,18 +74,15 @@ function Layout({ children }) {
                  <Logout/>
 
 
-
-{/*
                 {isLoggedIn && (
                             <Link to={'/cart'}>
-                                <li>
+                                <li className='inline'>
                                     <img src={CartIcon} className='w-8 h-8 inline' />
-                                    {' '}
-                                    <p className='text-black inline'>{cartsData?.items?.length}</p>
+                                    <p className='text-white font-semibold inline bg-red-600 rounded-full p-1.5'>{cartsData?.length}</p>
                                 </li>
                             </Link>
                             
-                        )} */}
+                        )}
             </nav>
 
                 {children}

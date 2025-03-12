@@ -7,16 +7,19 @@ import { getCartDetails, productAddToCart, productRemoveFromCart } from "../../R
 
 function ProductDetails() {
     const {productId} = useParams()
+    console.log(productId)
     const [productDetails,setProductDetails] = useState({})
-   const [isInCart,setIsInCart] = useState(false)
+  const [isInCart,setIsInCart] = useState(false)
     const dispatch = useDispatch()
     const fetchProductDetails = async()=>{
       const details =  await dispatch(getProductDetails(productId));
-      console.log(details)
      setProductDetails(details?.payload?.data?.data)
 
     }
 
+    useEffect(()=>{
+        fetchProductDetails()
+    },[productId])
 
     async function handleCart() {
         // Add product to cart
@@ -24,7 +27,7 @@ function ProductDetails() {
         if(response?.payload?.data?.success) {
             console.log(response)
             setIsInCart(true);
-           dispatch(getCartDetails()); // Fetch cart details and update state
+           await dispatch(getCartDetails()); // Fetch cart details and update state
         }
     }
 
@@ -33,12 +36,10 @@ function ProductDetails() {
         const response = await dispatch( productRemoveFromCart(productId));
         if(response?.payload?.data?.success) {
          setIsInCart(false);
-        dispatch(getCartDetails()); // Fetch cart details and update state
+        await dispatch(getCartDetails()); 
         }
     }
-    useEffect(()=>{
-        fetchProductDetails()
-    },[productId])
+
 
   return (
     <Layout>
