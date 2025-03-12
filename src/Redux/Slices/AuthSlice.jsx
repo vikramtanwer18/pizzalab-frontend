@@ -56,8 +56,7 @@ export const logout = createAsyncThunk('/auth/logout',async()=>{
               },
               loading:'Wait for a minute user is logout...',
               error:"User can't logout Something went wrong"   
-        })
-       
+        })  
     } catch (error) {
         console.log(error)
     }
@@ -78,8 +77,7 @@ const AuthSlice = createSlice({
                 localStorage.setItem('role', userData.userRole || '');
                 localStorage.setItem('data', JSON.stringify(userData.userData || {}));
         })
-        .addCase(logout.fulfilled,(state)=>{
-                      
+        .addCase(logout.fulfilled,(state)=>{           
             localStorage.setItem('isLoggedIn',false);
             localStorage.setItem('role','');
             localStorage.setItem('data',JSON.stringify({}))

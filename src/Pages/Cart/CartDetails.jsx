@@ -13,7 +13,7 @@ function CartDetails() {
     async function fetchCartDetails() {
         console.log("fetching cart details")
         const response = await dispatch(getCartDetails());
-        console.log('cart details from cart',response);
+        
         setCartDetails(response?.payload?.data?.data);
     }
 
@@ -27,7 +27,7 @@ function CartDetails() {
     }
     useEffect(() => {
         fetchCartDetails();
-    },[cartsData.length]);
+    },[cartsData?.length]);
 
 
     return (

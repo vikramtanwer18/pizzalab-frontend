@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllProducts } from "../Redux/Slices/ProductSlice";
 
+
 function ProductList() {
     const dispatch = useDispatch()
     const products = useSelector((state)=>state.product)
+
+ const fetchAllProducts = async()=>{
+    await dispatch(getAllProducts())
+  
+ }   
     useEffect(()=>{
-     dispatch(getAllProducts())
+     fetchAllProducts()
     },[])
 
   return (

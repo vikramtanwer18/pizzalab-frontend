@@ -4,29 +4,32 @@ import Logout from '../Pages/Auth/Logout';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCartDetails } from '../Redux/Slices/CartSlice';
+
 import CartIcon from '../assets/Images/cart2.png';
+import { getCartDetails } from '../Redux/Slices/CartSlice';
+import { logout } from '../Redux/Slices/AuthSlice';
 import { useEffect } from 'react';
+
 
 function Layout({ children }) {
     const navigate = useNavigate()
     const {role} = useSelector(state=>state.auth)
     const isLoggedIn =  useSelector((state)=> state.auth.isLoggedIn)
     const {cartsData} = useSelector((state)=>state.cart)
-    console.log('cartsdata',cartsData)
-    const dispatch = useDispatch();
- 
-    async function fetchCartDetails() {
-        const res = await dispatch(getCartDetails());
-        console.log("cart details", res)
-       
-    }
 
-    useEffect(() => {
-        if(isLoggedIn) {
-            fetchCartDetails();
+    const dispatch = useDispatch()
+    const fetchCartDetails = async()=>{
+        const response = await dispatch(getCartDetails())
+        if(response.payload.unAuthorized){
+            console.log("in the layout")
+            await dispatch(logout())
         }
-    }, []);
+    }
+    useEffect(()=>{
+        if(isLoggedIn){
+        fetchCartDetails()
+        }
+    },[])
 
     return (
         <div>
@@ -35,8 +38,8 @@ function Layout({ children }) {
 
                 <div className="flex items-center justify-center  cursor-pointer"
                  onClick={()=>navigate('/')}>
-                    <p>Pizza App</p>
-                    <img src={Pizzalogo} alt="Pizza logo" />
+                    <p>PizzaLab</p>
+                    <img src={Pizzalogo} alt="Pizza logo" className='h-10' />
                 </div>
 
                 <div className='hidden md:block'>
@@ -44,21 +47,21 @@ function Layout({ children }) {
 
                         <li className='hover:text-[#FF9110]'>
                             { ' ' }
-                            <p className='cursor-pointer'>Menu {' '}</p>
+                            <Link to={"/"}>Home</Link>
                         </li>
 
                         <li className='hover:text-[#FF9110]'>
                             { ' ' }
-                            <p className='cursor-pointer'>Services {' '}</p>
+                            <Link to={"/"}>About</Link>
                         </li>
 
+                        {/* <li className='hover:text-[#FF9110]'>
+                            { ' ' }
+                            <Link to={"/"}>Services</Link>
+                        </li> */}
                         <li className='hover:text-[#FF9110]'>
                             { ' ' }
-                            <p className='cursor-pointer'>About {' '}</p>
-                        </li>
-                        <li className='hover:text-[#FF9110]'>
-                            { ' ' }
-                            <Link to = {'/products'}className='cursor-pointer' lin>All Products {' '}</Link>
+                            <Link to = {'/products'}className='cursor-pointer' lin>AllProducts {' '}</Link>
                         </li> 
 
                         {

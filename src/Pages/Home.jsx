@@ -7,8 +7,9 @@ import Pickup from "../assets/Images/pickup.png";
 import Enjoy from "../assets/Images/enjoy.png";
 import Layout from "../Layouts/Layout";
 import ProductList from "../Components/ProductList";
-
+import { Link } from "react-router-dom";
 function Home() {
+ 
   return (
     <Layout>
     <div>
@@ -31,7 +32,7 @@ function Home() {
           </p>
 
           <button className="flex items-center px-4 py-2 text-white bg-yellow-500 rounded-md hover:bg-yellow-600 group">
-            Order Now
+           <Link to='/products'> Order Now</Link>
             <span className="inline-block ml-3 transition-transform ease-in-out group-hover:translate-x-2">
               <IconArrowRight />
             </span>

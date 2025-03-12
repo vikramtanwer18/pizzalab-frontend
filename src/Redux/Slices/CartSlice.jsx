@@ -51,6 +51,12 @@ export const getCartDetails = createAsyncThunk('/get/cart',async()=>{
         const apiResponse = await response;
         return apiResponse;
        } catch (error) {
+        if(error.response.status===404){
+            toast.error("Please login to view cart")
+           return {
+            unAuthorized:true
+           }
+        }
         console.log(error)
        }
 })

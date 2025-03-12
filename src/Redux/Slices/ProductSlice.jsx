@@ -28,6 +28,7 @@ export const createProduct = createAsyncThunk("/product/create",async(data)=>{
 }) 
 
 export const getAllProducts = createAsyncThunk('/get/products',async()=>{
+   
     try {
      const products = axiosInstance.get('/products')
      toast.promise(products,{
@@ -38,6 +39,7 @@ export const getAllProducts = createAsyncThunk('/get/products',async()=>{
      const apiResponse = await products;
      return apiResponse;
     } catch (error) {
+        toast.error("Please login to view cart")
      console.log(error)
     }
  })
