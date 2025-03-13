@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { login } from "../../Redux/Slices/AuthSlice"
 import { useNavigate } from "react-router"
 
-function Login() {
+function LoginPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [loginData,setLoginData] = useState({
@@ -47,4 +47,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginPage
