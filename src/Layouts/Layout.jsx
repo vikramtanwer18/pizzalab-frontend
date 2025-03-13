@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+import Footer from '../Components/Footer';
 import Pizzalogo from '../assets/Images/pizza1.png';
 import Logout from '../Pages/Auth/Logout';
 import { useNavigate } from 'react-router';
