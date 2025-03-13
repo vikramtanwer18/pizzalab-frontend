@@ -1,5 +1,5 @@
 
-import ProductList from "../../components/ProductList";
+import ProductList from "../../Components/ProductList";
 
 function Products() {
   
