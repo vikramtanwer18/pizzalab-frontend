@@ -7,7 +7,6 @@ const initialState = {
 }
 export const createProduct = createAsyncThunk("/product/create",async(data)=>{
     try {
-        console.log('product data',data)
         const response = axiosInstance.post('/products/register',data,{
             headers: {
                 "Content-Type": "multipart/form-data",

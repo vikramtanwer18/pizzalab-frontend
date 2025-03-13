@@ -25,7 +25,6 @@ function Signup() {
 
     async function handleFormSubmit(e){
         e.preventDefault(); // prevent the form from reloading the page
-       console.log(signUpState.mobileNumber.length)
         if(!signUpState.firstName || !signUpState.email || !signUpState.password || !signUpState.mobileNumber){
             toast.error('Missing value from the form')
             return
@@ -39,7 +38,6 @@ function Signup() {
             return
         }
         const apiReponse = await dispatch(createAccount(signUpState));
-        console.log("Api response", apiReponse);
         if(apiReponse.payload.data.success){
             navigate('/auth/login')
         }

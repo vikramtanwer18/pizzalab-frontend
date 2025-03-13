@@ -12,7 +12,6 @@ const initialState = {
 export const createAccount = createAsyncThunk('/auth/createAccount',async(data)=>{
    try {
     const response = axiosInstance.post('/users/register',data)
-    console.log('response',response)
     toast.promise(response,{
         success: (resolvedResponse)=>{
           return  resolvedResponse?.data?.message
@@ -31,12 +30,11 @@ export const createAccount = createAsyncThunk('/auth/createAccount',async(data)=
 export const login = createAsyncThunk('/auth/login',async(data)=>{
     try {
         const response = axiosInstance.post('/users/auth/login',data)
-        console.log('incoming data form thung',data)
         toast.promise(response,{
             success: (resolvedResponse)=>{
                 return  resolvedResponse?.data?.message
               },
-              loading:'Wait for a minute user is regestering...',
+              loading:'Wait for a minute user is login...',
               error:"User can't login Something went wrong"   
         })
         const apiResponse = await response;

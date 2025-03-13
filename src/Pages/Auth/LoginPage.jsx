@@ -34,7 +34,6 @@ function LoginPage() {
         }
 
         const apiResponse = await dispatch(login(loginData))
-        console.log('api response in com',apiResponse)
         if(apiResponse.payload.data.success){
            navigate('/')
         }

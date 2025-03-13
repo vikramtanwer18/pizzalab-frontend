@@ -25,7 +25,6 @@ function AddProduct() {
        async function handleFormSubmit(e){
             e.preventDefault()
            const apiResponse = await dispatch(createProduct(addProduct))
-           console.log(apiResponse?.payload?.data?.data?.success)
            if(apiResponse?.payload?.data?.data?.success){
             addProduct.productName = ""
             addProduct.description =''

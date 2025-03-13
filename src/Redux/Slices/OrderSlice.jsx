@@ -8,7 +8,6 @@ const initialState = {
 
 export const createOrder = createAsyncThunk('order/create',async(data)=>{
     try {
-        console.log('order is data',data)
         const response = axiosInstance.post('/orders',data)
         toast.promise(response,{
             loading:'Wait for a time order is createing....',
@@ -29,7 +28,6 @@ const orderSlice = createSlice({
     reducers:{ },
     extraReducers: (builder) => {
         builder.addCase(createOrder.fulfilled, (state, action) => {
-            console.log('order is',action?.payload)
             state.orders = action?.payload?.data;
         });
     }

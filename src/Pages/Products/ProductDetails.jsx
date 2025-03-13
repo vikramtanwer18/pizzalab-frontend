@@ -7,7 +7,6 @@ import { getCartDetails, productAddToCart, productRemoveFromCart } from "../../R
 
 function ProductDetails() {
     const {productId} = useParams()
-    console.log(productId)
     const [productDetails,setProductDetails] = useState({})
   const [isInCart,setIsInCart] = useState(false)
     const dispatch = useDispatch()
@@ -25,7 +24,6 @@ function ProductDetails() {
         // Add product to cart
         const response = await dispatch(productAddToCart(productId));
         if(response?.payload?.data?.success) {
-            console.log(response)
             setIsInCart(true);
            await dispatch(getCartDetails()); // Fetch cart details and update state
         }

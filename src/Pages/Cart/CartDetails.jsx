@@ -11,7 +11,6 @@ function CartDetails() {
     const dispatch = useDispatch();
 
     async function fetchCartDetails() {
-        console.log("fetching cart details")
         const response = await dispatch(getCartDetails());
         
         setCartDetails(response?.payload?.data?.data);
@@ -21,7 +20,6 @@ function CartDetails() {
         // Remove product from cart
         const response = await dispatch(productRemoveFromCart(productId));
         if(response?.payload?.data?.success) {
-            console.log("removed successfully")
             dispatch(getCartDetails()); // Fetch cart details and update state
         }
     }
