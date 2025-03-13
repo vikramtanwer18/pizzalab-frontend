@@ -34,7 +34,7 @@ function LoginPage() {
         }
 
         const apiResponse = await dispatch(login(loginData))
-        if(apiResponse.payload.data.success){
+        if(apiResponse?.payload?.data?.success){
            navigate('/')
         }
     }

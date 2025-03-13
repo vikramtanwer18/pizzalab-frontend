@@ -38,7 +38,7 @@ function Signup() {
             return
         }
         const apiReponse = await dispatch(createAccount(signUpState));
-        if(apiReponse.payload.data.success){
+        if(apiReponse?.payload?.data?.success){
             navigate('/auth/login')
         }
     }
