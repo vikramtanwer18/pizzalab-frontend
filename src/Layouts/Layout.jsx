@@ -3,12 +3,12 @@ import Pizzalogo from '../assets/Images/pizza1.png';
 import Logout from '../Pages/Auth/Logout';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
 import CartIcon from '../assets/Images/cart2.png';
-import { getCartDetails } from '../Redux/Slices/CartSlice';
-import { logout } from '../Redux/Slices/AuthSlice';
-import { useEffect } from 'react';
+// import { getCartDetails } from '../Redux/Slices/CartSlice';
+// import { logout } from '../Redux/Slices/AuthSlice';
+// import { useEffect } from 'react';
 
 
 function Layout({ children }) {
@@ -17,19 +17,19 @@ function Layout({ children }) {
     const isLoggedIn =  useSelector((state)=> state.auth.isLoggedIn)
     const {cartsData} = useSelector((state)=>state.cart)
 
-    const dispatch = useDispatch()
-    const fetchCartDetails = async()=>{
-        const response = await dispatch(getCartDetails())
-        if(response.payload.unAuthorized){
-            console.log("in the layout")
-            await dispatch(logout())
-        }
-    }
-    useEffect(()=>{
-        if(isLoggedIn){
-        fetchCartDetails()
-        }
-    },[])
+    // const dispatch = useDispatch()
+    // const fetchCartDetails = async()=>{
+    //     const response = await dispatch(getCartDetails())
+    //     if(response.payload.unAuthorized){
+    //         console.log("in the layout")
+    //         await dispatch(logout())
+    //     }
+    // }
+    // useEffect(()=>{
+    //     if(isLoggedIn){
+    //     fetchCartDetails()
+    //     }
+    // },[])
 
     return (
         <div>
